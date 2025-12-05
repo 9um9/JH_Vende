@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Teste de Headset - JH_Vende</title>
+  <link rel="stylesheet" href="tests.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Teste de Headset</h1>
+    <p>Use os botões abaixo para testar canais esquerdo/direito e simular uma sequência surround 7.1. Ajuste volume e experimente o microfone do seu dispositivo (se necessário).</p>
+
+    <div class="headset-panel">
+      <div class="controls">
+        <label for="pannerSelect">Canal:</label>
+        <select class="mouse-btn" id="pannerSelect" aria-label="Panner">
+          <option value="-1">Left (L)</option>
+          <option value="-0.6">Left Rear</option>
+          <option value="-0.2">Left Front</option>
+          <option value="0">Center</option>
+          <option value="0.2">Right Front</option>
+          <option value="0.6">Right Rear</option>
+          <option value="1">Right (R)</option>
+        </select>
+
+        <label for="volRange">Volume:</label>
+        <input style="animation: glow 3s infinite;" id="volRange" type="range" min="0" max="1" step="0.01" value="0.4" />
+
+        <button id="playTone" class="mouse-btn">Tocar Tom</button>
+        <button id="stopTone" class="mouse-btn" >Parar</button>
+        <button id="playSeq" class="mouse-btn" >Simular Surround</button>
+      </div>
+
+      <div>
+        <p><strong>Como testar:</strong></p>
+        <ol>
+          <li>Use "Canal" para selecionar L/R/Center.</li>
+          <li>Clique em "Tocar Tom" e ouça no headset.</li>
+          <li>Use "Simular Surround" para ouvir sequência dos canais (panning).</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <script src="tests.js" defer></script>
+</body>
+</html>

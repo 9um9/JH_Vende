@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Catálogo | JH_Vende - Filtros e Busca</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ...existing CSS is in styles.css; a few extra page-local tweaks: */
+    body { font-family: 'Science Gothic', Arial, sans-serif; }
+    .catalog-wrap { display:flex; gap:20px; padding:20px; }
+    .filter-panel { width:260px; background:#fff; padding:16px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.06); height:fit-content; }
+    .filter-panel h3{margin:6px 0 12px;}
+    .filter-group{margin-bottom:12px;}
+    .filter-group label{display:block; margin:6px 0; font-size:14px;}
+    .results { flex:1; }
+    .search-row { display:flex; gap:10px; margin-bottom:12px; align-items:center; }
+    .search-row input[type="search"]{ flex:1; padding:8px 10px; border-radius:6px; border:1px solid #ccc; }
+    .sort-select { padding:8px; border-radius:6px; border:1px solid #ccc; }
+    .counts { margin-bottom:8px; font-size:14px; color:#555;}
+    .product-grid{ display:grid; grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); gap:14px; }
+    .product-card { background:#fff; padding:12px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.06); display:flex; flex-direction:column; gap:8px; }
+    .product-card .id { color:#777; font-size:12px; }
+    .product-card img{ width:100%; height:140px; object-fit:cover; border-radius:6px; }
+    .price { font-weight:700; color:#0a7; }
+    .product-actions { display:flex; gap:8px; margin-top:auto; align-items:center; }
+    .pill { background:#f3f3f3; padding:6px 8px; border-radius:999px; font-size:12px; color:#333; }
+    .no-results { padding:20px; text-align:center; background:#fff; border-radius:8px; }
+    @media (max-width:900px){
+      .catalog-wrap { flex-direction:column; }
+      .filter-panel{ width:100%;}
+    }
+    h2 { 
+      font-size:18px; 
+      margin:0; 
+      color: rgb(255, 255, 255);
+      text-shadow: black 1px 2px 0px;
+      filter: drop-shadow(-1px -1px 2px rgb(2, 2, 2));
+    }
+    .filter-panel {
+      border: rgba(44, 44, 44, 0.466) 10px outset;
+      color: rgb(90, 90, 90);
+      text-shadow: black 1px 2px 0px;
+      filter: drop-shadow(-1px -1px 2px rgb(2, 2, 2));
+    }
+  </style>
+</head>
+<body>
+  <!-- ...existing header ... -->
+  <header class="header">
+    <div class="logo">JH_Vende</div>
+    <nav class="socials">
+      <a href="https://www.instagram.com/jh_vende/" target="_blank">Instagram</a>
+      <a href="https://facebook.com" target="_blank">Facebook</a>
+      <a target="_blank"><button id="whatsappBtn">WhatsApp</button></a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1 class="h1Title">Catálogo Avançado</h1>
+    <p>Use a busca e filtros para encontrar rapidamente o produto desejado.</p>
+
+    <div class="catalog-wrap">
+      <aside class="filter-panel" aria-label="Filtros">
+        <h3>Filtros</h3>
+
+        <div class="filter-group">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <strong>Categorias</strong>
+            <button id="resetFilters" style="background:none;border:0;color:#06c;cursor:pointer">Limpar</button>
+          </div>
+          <label><input type="checkbox" class="category-filter" value="GPU" /> GPU</label>
+          <label><input type="checkbox" class="category-filter" value="Processador" /> Processador</label>
+          <label><input type="checkbox" class="category-filter" value="PlacaMãe" /> Placa-Mãe</label>
+          <label><input type="checkbox" class="category-filter" value="Celular" /> Celular</label>
+          <label><input type="checkbox" class="category-filter" value="Adaptador" /> Adaptador</label>
+        </div>
+
+        <div class="filter-group">
+          <strong>Condição</strong>
+          <label><input type="checkbox" class="condition-filter" value="Novo" /> Novo</label>
+          <label><input type="checkbox" class="condition-filter" value="Seminovo" /> Seminovo</label>
+        </div>
+
+        <div class="filter-group">
+          <strong>Preço</strong>
+          <div style="display:flex; gap:8px;">
+            <input id="priceMin" type="number" placeholder="Mín." style="width:100%; padding:6px;"/>
+            <input id="priceMax" type="number" placeholder="Máx." style="width:100%; padding:6px;"/>
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <strong>Marca</strong>
+          <label><input type="checkbox" class="brand-filter" value="Asus" /> Asus</label>
+          <label><input type="checkbox" class="brand-filter" value="AMD" /> AMD</label>
+          <label><input type="checkbox" class="brand-filter" value="Redmi" /> Redmi</label>
+          <label><input type="checkbox" class="brand-filter" value="Generic" /> Generic</label>
+        </div>
+
+        <div class="filter-group">
+          <strong>Outros</strong>
+          <label><input id="onlyInStock" type="checkbox"/> Apenas em Estoque</label>
+        </div>
+      </aside>
+
+      <section class="results">
+        <div class="search-row">
+          <input id="searchBox" type="search" placeholder="Pesquisar por nome, ID, marca..." />
+          <select id="sortSelect" class="sort-select">
+            <option value="relevance">Relevância</option>
+            <option value="price-asc">Preço: baixo → alto</option>
+            <option value="price-desc">Preço: alto → baixo</option>
+            <option value="id-desc">Últimos</option>
+          </select>
+          <button id="applyFiltersBtn" class="pill">Aplicar</button>
+        </div>
+
+        <div class="counts"><span id="resultsCount">0</span> produtos encontrados</div>
+
+        <div id="productGrid" class="product-grid" aria-live="polite">
+          <!-- produtos injetados via JS -->
+        </div>
+
+        <div id="noResults" class="no-results" style="display:none;">
+          Nenhum produto encontrado. Tente ajustar os filtros.
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="catalog_pichau.js"></script>
+  <script src="script.js"></script>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <p>© 2025 JH_Vende</p>
+      <small>Atendimento via WhatsApp: <a href="https://wa.me/5534997172028" target="_blank">+55 34 99717-2028</a></small>
+    </div>
+  </footer>
+</body>
+</html>
