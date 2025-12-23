@@ -18,17 +18,17 @@
 
   const PRODUCTS = [
     { id: 'P0001', title:'Asus RTX 2060 ROG Strix', category:'GPU', brand:'Asus', condition:'Seminovo', price:1299.84, inStock:true, img:'https://m.media-amazon.com/images/I/61nHx0+pAIL.jpg' },
-    { id: 'P0002', title:'Adaptador VGA -> HDMI', category:'Adaptador', brand:'Generic', condition:'Novo', price:45.77, inStock:true, img:'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcSWzWDD...' },
-    { id: 'P0003', title:'Adaptador Wifi USB 1300mbps', category:'Adaptador', brand:'Generic', condition:'Novo', price:75.00, inStock:false, img:'' },
-    { id: 'P0004', title:'Redmi Note 12 256GB', category:'Celular', brand:'Redmi', condition:'Novo', price:850.00, inStock:true, img:'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcTYieo...' },
-    { id: 'P0005', title:'AMD Asus ROG Strix B450-F', category:'PlacaMãe', brand:'Asus', condition:'Seminovo', price:893.30, inStock:true, img:'https://images6.kabum.com.br/produtos/fotos/97706/97706_2_1533576970_gg.jpg' },
-    { id: 'P0006', title:'Ryzen 5 5500 4.2GHz', category:'Processador', brand:'AMD', condition:'Novo', price:475.49, inStock:true, img:'' },
-    { id: 'P0007', title:'Ryzen 5 5600 4.4GHz', category:'Processador', brand:'AMD', condition:'Seminovo', price:655.71, inStock:false, img:'' },
-    { id: 'P0008', title:'Monitor Gamer 24" 144Hz', category:'Monitor', brand:'Generic', condition:'Novo', price:999.99, inStock:true, img:'' },
-    { id: 'P0009', title:'Fonte Gamer 650W', category:'Fonte', brand:'Generic', condition:'Novo', price:289.50, inStock:true, img:'' },
-    { id: 'P0010', title:'SSD NVMe 1TB', category:'Storage', brand:'Generic', condition:'Novo', price:429.00, inStock:true, img:'' },
-    { id: 'P0011', title:'Placa de Som Externa', category:'PlacaMãe', brand:'Generic', condition:'Seminovo', price:99.99, inStock:true, img:'' },
-    { id: 'P0012', title:'Cooler CPU RGB', category:'Cooler', brand:'Generic', condition:'Novo', price:149.00, inStock:true, img:'' }
+    { id: 'P0002', title:'Adaptador VGA -> HDMI', category:'Adaptador', brand:'Generic', condition:'Novo', price:45.77, inStock:true, img:'adaptadorVGA.jpg' },
+    { id: 'P0003', title:'Adaptador Wifi USB 1300mbps', category:'Adaptador', brand:'Generic', condition:'Novo', price:75.00, inStock:false, img:'adaptadorWifi.jpg' },
+    { id: 'P0004', title:'Redmi Note 12 256GB', category:'Celular', brand:'Redmi', condition:'Novo', price:850.00, inStock:true, img:'redmiNote12.jpg' },
+    { id: 'P0005', title:'AMD Asus ROG Strix B450-F', category:'PlacaMãe', brand:'Asus', condition:'Seminovo', price:893.30, inStock:true, img:'b450RogStrix.jpg' },
+    { id: 'P0006', title:'Ryzen 5 5500 4.2GHz', category:'Processador', brand:'AMD', condition:'Novo', price:475.49, inStock:true, img:'Rzyen5_5500.jpg' },
+    { id: 'P0007', title:'Ryzen 5 5600 4.4GHz', category:'Processador', brand:'AMD', condition:'Seminovo', price:655.71, inStock:false, img:'ryzen5_5600.jpg' },
+    { id: 'P0008', title:'Monitor Gamer 24" 144Hz', category:'Monitor', brand:'Generic', condition:'Novo', price:759.99, inStock:true, img:'monitor24_144.jpg' },
+    { id: 'P0009', title:'Fonte Gamer 650W', category:'Fonte', brand:'Generic', condition:'Novo', price:289.50, inStock:true, img:'font650wGamemax.jpeg' },
+    { id: 'P0010', title:'SSD NVMe 1TB', category:'Storage', brand:'Generic', condition:'Novo', price:429.00, inStock:true, img:'ssd1tbEVO.jpg' },
+    { id: 'P0011', title:'Placa de Som Externa', category:'PlacaMãe', brand:'Generic', condition:'Seminovo', price:99.99, inStock:true, img:'PlacaDSomExt.jpg' },
+    { id: 'P0012', title:'Cooler CPU RGB', category:'Cooler', brand:'Generic', condition:'Novo', price:149.00, inStock:true, img:'CoolerCPU.jpg' }
   ];
 
   // Helpers
